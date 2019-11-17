@@ -30,6 +30,6 @@ void IIC_Transmit(uint8_t slaveAddr,uint8_t regAddr,uint8_t *data,uint16_t dataL
 void HX8915_Init(void);    //HX8915初始化
 void HX8915_SET(uint16_t v1,uint16_t v2);//V1\V2设置
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);//串口中断回调函数
-uint8_t Data_R(uint8_t data[]);//数据接收处理
+uint8_t USER_Receive(uint8_t data[]);//数据接收处理
 
 #endif

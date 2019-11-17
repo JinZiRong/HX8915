@@ -3,7 +3,7 @@
 <title>Static Call Graph - [HX8915\HX8915.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image HX8915\HX8915.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sun Nov 17 19:33:18 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sun Nov 17 20:12:03 2019
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -255,10 +255,6 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[62]"></a>Data_R</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, hx8915.o(i.Data_R))
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
-</UL>
-
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -508,9 +504,9 @@ Global Symbols
 <P><STRONG><a name="[61]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, hx8915.o(i.HAL_UART_RxCpltCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; USER_PWM_SET &rArr; HAL_TIM_PWM_Init &rArr; TIM_Base_SetConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USER_PWM_SET
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USER_Receive
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USER_PWM_SET
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HX8915_SET
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_R
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
@@ -701,6 +697,10 @@ Global Symbols
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
+</UL>
+
+<P><STRONG><a name="[62]"></a>USER_Receive</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, hx8915.o(i.USER_Receive))
+<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.UsageFault_Handler))
