@@ -91,9 +91,9 @@ void IIC_Send_Byte(unsigned char IIC_Byte)
 	SDA_1;
 	IIC_Delay();
 	SCL_1;
-  IIC_Delay();
+        IIC_Delay();
 	SCL_0;
-  IIC_Delay();
+        IIC_Delay();
 }
 
 void IIC_Transmit(uint8_t slaveAddr,uint8_t regAddr,uint8_t *data,uint16_t dataLen)
