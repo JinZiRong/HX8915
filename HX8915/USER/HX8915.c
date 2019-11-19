@@ -3,16 +3,16 @@
 #include "usart.h"
 #include "gpio.h"
 
-const uint8_t InitData[3]={0x00,0x00,0x00};  //¼Ä´æÆ÷³õÊ¼»¯Ð´ÈëÖµ
-uint8_t REG1[3]={0x00,0x00,0x00};            //B1Çø¼Ä´æÆ÷Öµ
-uint8_t REG2[3]={0x00,0x00,0x00};            //B2Çø¼Ä´æÆ÷Öµ
-uint8_t Data[12];                            //´®¿Ú½ÓÊÕÊý¾Ý»º´æ
-uint8_t sta=0;                               //ÅÐ¶ÏÎ»
-uint16_t SCAL1=0;                            //Ô¤·ÖÆµ
-uint16_t SCAL2=0;                            //·ÖÆµ
-uint16_t Puse=0;                             //Õ¼¿Õ±È
-uint16_t V1=0;                               //V1µçÑ¹Ð´ÈëÖµ
-uint16_t V2=0;                               //V2µçÑ¹Ð´ÈëÖµ
+const uint8_t InitData[3]={0x00,0x00,0x00};  //å¯„å­˜å™¨åˆå§‹åŒ–å†™å…¥å€¼
+uint8_t REG1[3]={0x00,0x00,0x00};            //B1åŒºå¯„å­˜å™¨å€¼
+uint8_t REG2[3]={0x00,0x00,0x00};            //B2åŒºå¯„å­˜å™¨å€¼
+uint8_t Data[12];                            //ä¸²å£æŽ¥æ”¶æ•°æ®ç¼“å­˜
+uint8_t sta=0;                               //åˆ¤æ–­ä½
+uint16_t SCAL1=0;                            //é¢„åˆ†é¢‘
+uint16_t SCAL2=0;                            //åˆ†é¢‘
+uint16_t Puse=0;                             //å ç©ºæ¯”
+uint16_t V1=0;                               //V1ç”µåŽ‹å†™å…¥å€¼
+uint16_t V2=0;                               //V2ç”µåŽ‹å†™å…¥å€¼
 
 void USER_PWM_SET(uint16_t scal1,uint16_t scal2,uint16_t puse)
 {
@@ -116,7 +116,7 @@ void HX8915_Init(void)
 
 void HX8915_SET(uint16_t v1,uint16_t v2)
 {
-	if((v1>>15)==(v2>>15))            //ÈôV1,V2×î¸ßÎ»ÏàÍ¬£¬ÔòÍ¬ÏàÎ»Êä³ö
+	if((v1>>15)==(v2>>15))            //è‹¥V1,V2æœ€é«˜ä½ç›¸åŒï¼Œåˆ™åŒç›¸ä½è¾“å‡º
 	{
 		REG1[0]=(v1>>4)&0x3F;
 	  REG1[1]=((v1&0x0F)<<4)|((v2>>8)&0x03);
@@ -125,7 +125,7 @@ void HX8915_SET(uint16_t v1,uint16_t v2)
 		REG2[1]=0x00;
 		REG2[2]=0x00;
 	}
-	else                               //ÈôV1,V2×î¸ßÎ»²»Í¬£¬ÔòÊä³öÏàÎ»Ïà²î°ë¸öÖÜÆÚ
+	else                               //è‹¥V1,V2æœ€é«˜ä½ä¸åŒï¼Œåˆ™è¾“å‡ºç›¸ä½ç›¸å·®åŠä¸ªå‘¨æœŸ
 	{
 		REG1[0]=(v1>>4)&0x3F;
 		REG1[1]=(v1&0x0F)<<4;
@@ -154,11 +154,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 uint8_t USER_Receive(uint8_t data[])
 {
-	if(data[0]==0x19&&sta==0)    //Ö¡Í·1
+	if(data[0]==0x19&&sta==0)    //å¸§å¤´1
 	{
 		sta++;
 	}
-	if(data[1]==0X65&&sta==1)    //Ö¡Í·2
+	if(data[1]==0X65&&sta==1)    //å¸§å¤´2
 	{
 		sta++;
 	}
@@ -172,5 +172,6 @@ uint8_t USER_Receive(uint8_t data[])
 		sta=0;
 		return 1;
   }
+	sta=0;
 	return 0;
 }
