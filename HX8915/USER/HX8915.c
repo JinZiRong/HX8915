@@ -171,7 +171,7 @@ uint8_t USER_Receive(uint8_t data[])
 		Puse=(data[10]<<8)+data[11];
 		sta=0;
 		return 1;
-  }
+        }
 	sta=0;
 	return 0;
 }
