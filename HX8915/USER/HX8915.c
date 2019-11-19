@@ -16,7 +16,7 @@ uint16_t V2=0;                               //V2电压写入值
 
 void USER_PWM_SET(uint16_t scal1,uint16_t scal2,uint16_t puse)
 {
-	HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_4);
+  HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_4);
 	
   TIM_OC_InitTypeDef sConfigOC;
 
@@ -36,7 +36,7 @@ void USER_PWM_SET(uint16_t scal1,uint16_t scal2,uint16_t puse)
 	
   HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_4);
 	
-	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_4);
 }
 
 void IIC_Delay(void)
@@ -53,12 +53,12 @@ void IIC_Start(void)
 	IIC_Delay();
 	SDA_0;
 	IIC_Delay();
-  SCL_0;
+        SCL_0;
 }
 
 void IIC_Stop(void)
 {
-   SCL_0;
+         SCL_0;
 	 SDA_0;
 	 IIC_Delay();
 	 SCL_1;
@@ -80,11 +80,11 @@ void IIC_Send_Byte(unsigned char IIC_Byte)
 		{
 			SDA_0;
 		}
-    IIC_Delay();
+                IIC_Delay();
 		SCL_1;
-    IIC_Delay();
+                IIC_Delay();
 		SCL_0;
-    IIC_Delay();
+                IIC_Delay();
 		IIC_Byte<<=1;
 	}
 	IIC_Delay();
@@ -119,8 +119,8 @@ void HX8915_SET(uint16_t v1,uint16_t v2)
 	if((v1>>15)==(v2>>15))            //若V1,V2最高位相同，则同相位输出
 	{
 		REG1[0]=(v1>>4)&0x3F;
-	  REG1[1]=((v1&0x0F)<<4)|((v2>>8)&0x03);
-	  REG1[2]=v2&0xFF;
+	        REG1[1]=((v1&0x0F)<<4)|((v2>>8)&0x03);
+	        REG1[2]=v2&0xFF;
 		REG2[0]=0x00;
 		REG2[1]=0x00;
 		REG2[2]=0x00;
@@ -143,7 +143,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance==huart1.Instance)
 	{
-    if(USER_Receive(Data)==1)
+           if(USER_Receive(Data)==1)
 		{
 			HX8915_SET(V1,V2);
 			USER_PWM_SET(SCAL1,SCAL2,Puse);
